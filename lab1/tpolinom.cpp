@@ -104,6 +104,7 @@ ostream& operator << (ostream& os, TPolinom& p){
                         os << p.c << " ";
                 }
         }
+     else{
         if (p.b == 0)
         {
             if (p.c == 0)
@@ -122,6 +123,7 @@ ostream& operator << (ostream& os, TPolinom& p){
                 os<<"+"<< p.c<<"";
             else if(p.c<0)
                 os << p.c << "";
+        }
         }
 
     }
