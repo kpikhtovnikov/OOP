@@ -48,18 +48,24 @@ number TPolinom::Discriminant(){
 
 
 number* TPolinom::Roots(){
-    number * roots;
+    number * ArrayOfRoots;
     if(QuantityOfRoots()==2){
-        roots = new int[2];
-        roots[0] = (-b + sqrt(Discriminant()))/(2*a);
-        roots[1] = (-b - sqrt(Discriminant()))/(2*a);
+        ArrayOfRoots = new int[2];
+        ArrayOfRoots[0] = (-b + sqrt(Discriminant()))/(2*a);
+        ArrayOfRoots[1] = (-b - sqrt(Discriminant()))/(2*a);
     }else if(QuantityOfRoots()==1){
-        roots = new int[1];
-         roots[0] = -b/(2*a);
+        ArrayOfRoots = new int[1];
+        ArrayOfRoots[0] = -b/(2*a);
     }else{
-        roots = NULL;
+        ArrayOfRoots = NULL;
     }
-    return roots;
+    if(RootsInteger(ArrayOfRoots,QuantityOfRoots(),getA(),getB(),getC())){
+        return ArrayOfRoots;
+    }
+    else{
+        return NULL;
+    }
+    delete [] ArrayOfRoots;
 }
 
 
@@ -98,63 +104,63 @@ ostream& operator << (ostream& os, TPolinom& p){
                         os << p.c << " ";
                 }
         }
+        if (p.b == 0)
+        {
+            if (p.c == 0)
+                os << "";
+            if (p.c > 0)
+                os<<"+"<< p.c<<"";
+            else if(p.c<0)
+                os << p.c << "";
+        }
+        if (p.b < 0)
+        {
+            os << p.b << "x";
+            if (p.c == 0)
+                os << "";
+            if (p.c > 0)
+                os<<"+"<< p.c<<"";
+            else if(p.c<0)
+                os << p.c << "";
+        }
 
-            if (p.b < 0)
-            {
-                os << p.b << "x";
-                if (p.c == 0)
-                    os << "";
-                if (p.c > 0)
-                    os<<"+"<< p.c<<"";
-                else if(p.c<0)
-                    os << p.c << "";
-            }
-            if (p.b == 0)
-            {
-                if (p.c == 0)
-                    os << "";
-                if (p.c > 0)
-                    os<<"+"<< p.c<<"";
-                else if(p.c<0)
-                    os << p.c << "";
-            }
     }
 
-    number*roots = p.Roots();
+    number*ArrayOfRoots = p.Roots();
     if(p.printMode == EPrintModeCanonic){
         if(p.QuantityOfRoots()==2){
-            if (roots[0]>0 && roots[1]>0){
-            os<<p.a<<"*"<<"(x-"<<roots[0]<<")"<<"*"<<"(x-"<<roots[1]<<")";
+            if (ArrayOfRoots[0]>0 && ArrayOfRoots[1]>0){
+            os<<p.a<<"*"<<"(x-"<<ArrayOfRoots[0]<<")"<<"*"<<"(x-"<<ArrayOfRoots[1]<<")";
             }
-            else if(roots[0]<0 && roots[1]<0){
-             os<<p.a<<"*"<<"(x+"<<-roots[0]<<")"<<"*"<<"(x+"<<-roots[1]<<")";
+            else if(ArrayOfRoots[0]<0 && ArrayOfRoots[1]<0){
+             os<<p.a<<"*"<<"(x+"<<-ArrayOfRoots[0]<<")"<<"*"<<"(x+"<<-ArrayOfRoots[1]<<")";
             }
-            else if(roots[0]<0 && roots[1]>0){
-             os<<p.a<<"*"<<"(x+"<<-roots[0]<<")"<<"*"<<"(x-"<<roots[1]<<")";
+            else if(ArrayOfRoots[0]<0 && ArrayOfRoots[1]>0){
+             os<<p.a<<"*"<<"(x+"<<-ArrayOfRoots[0]<<")"<<"*"<<"(x-"<<ArrayOfRoots[1]<<")";
             }
-            else if(roots[0]>0 && roots[1]<0){
-             os<<p.a<<"*"<<"(x-"<<roots[0]<<")"<<"*"<<"(x+"<<-roots[1]<<")";
+            else if(ArrayOfRoots[0]>0 && ArrayOfRoots[1]<0){
+             os<<p.a<<"*"<<"(x-"<<ArrayOfRoots[0]<<")"<<"*"<<"(x+"<<-ArrayOfRoots[1]<<")";
             }
-            else if(roots[0]==0 && roots[1]<0){
-             os<<p.a<<"*"<<"x"<<"*"<<"(x+"<<-roots[1]<<")";
+            else if(ArrayOfRoots[0]==0 && ArrayOfRoots[1]<0){
+             os<<p.a<<"*"<<"x"<<"*"<<"(x+"<<-ArrayOfRoots[1]<<")";
             }
-            else if(roots[0]==0 && roots[1]>0){
-             os<<p.a<<"*"<<"x"<<"*"<<"(x-"<<roots[1]<<")";
+            else if(ArrayOfRoots[0]==0 && ArrayOfRoots[1]>0){
+             os<<p.a<<"*"<<"x"<<"*"<<"(x-"<<ArrayOfRoots[1]<<")";
             }
-            else if(roots[0]>0 && roots[1]==0){
-             os<<p.a<<"*"<<"(x-"<<roots[0]<<")"<<"*"<<"x";
+            else if(ArrayOfRoots[0]>0 && ArrayOfRoots[1]==0){
+             os<<p.a<<"*"<<"(x-"<<ArrayOfRoots[0]<<")"<<"*"<<"x";
             }
-            else if(roots[0]<0 && roots[1]==0){
-             os<<p.a<<"*"<<"(x+"<<-roots[0]<<")"<<"*"<<"x";
+            else if(ArrayOfRoots[0]<0 && ArrayOfRoots[1]==0){
+             os<<p.a<<"*"<<"(x+"<<-ArrayOfRoots[0]<<")"<<"*"<<"x";
             }
         }else if(p.QuantityOfRoots()==1){
-              if (roots[0]>0){
-              os<<p.a<<"*"<<"(x-"<<roots[0]<<")"<<"^2";
+              if (ArrayOfRoots[0]>0){
+              os<<p.a<<"*"<<"(x-"<<ArrayOfRoots[0]<<")"<<"^2";
               }
-              if (roots[0]<0){
-              os<<p.a<<"*"<<"(x+"<<-roots[0]<<")"<<"^2";
+              if (ArrayOfRoots[0]<0){
+              os<<p.a<<"*"<<"(x+"<<-ArrayOfRoots[0]<<")"<<"^2";
               }
-              if (roots[0]==0){
+              if (ArrayOfRoots[0]==0){
               os<< p.a<<"x^2";
               }
         }else{
@@ -162,9 +168,17 @@ ostream& operator << (ostream& os, TPolinom& p){
         }
     }
     return os;
-    delete [] roots;
+    delete [] ArrayOfRoots;
 }
 
-
+bool TPolinom:: RootsInteger(number*ArrayOfRoots,int quantityOfRoots,number a,number b,number c){
+    if(quantityOfRoots==2){
+        return (ArrayOfRoots[0]+ArrayOfRoots[1])==-(b/a) && ArrayOfRoots[0]*ArrayOfRoots[1]==(c/a) ;
+    }else if(quantityOfRoots==1){
+        return (ArrayOfRoots[0]+ArrayOfRoots[0])==-(b/a) && ArrayOfRoots[0]*ArrayOfRoots[0]==(c/a) ;
+    }else{
+        return false;
+    }
+}
 
 

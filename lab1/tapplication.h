@@ -4,7 +4,6 @@
 
 class TApplication
 {
-bool RootsInteger(number*,int,number,number,number);
 int menu();
 public:
     TApplication();
