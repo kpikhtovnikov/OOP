@@ -1,31 +1,32 @@
-#ifndef RATIONAL_H
-#define RATIONAL_H
+#ifndef Rational_H
+#define Rational_H
 
 #include <iostream>
 using namespace std;
 
-class Rational
+class TRational
 {
     int numerator;                      // Числитель
     unsigned int denominator;           // Знаменатель (>0)
-    unsigned int NOK(const Rational&);  // Наименьшее общее кратное
+    unsigned int NOK(const TRational&);  // Наименьшее общее кратное
     int NOD(const int&,const int&);     // Наибольший общий делитель
     void decrease();                    // Сократить дробь
+    //TRational fraction(const double);
 public:
-    Rational ();
-    Rational(const int&);
-    Rational operator+ (const Rational&);   // Перегруженный оператор +
-    Rational operator* (const Rational&);   // Перегруженный оператор *
-    Rational operator* (const int&);        // Перегруженный оператор *с,где c-какое-либо число
-    Rational operator/ (const Rational&);   // Перегруженный оператор /
+    TRational ();
+    TRational(const int&);
+    TRational operator+ (const TRational&);   // Перегруженный оператор +
+    TRational operator* (const TRational&);   // Перегруженный оператор *
+    TRational operator* (const int&);        // Перегруженный оператор *с,где c-какое-либо число
+    TRational operator/ (const TRational&);   // Перегруженный оператор /
     bool operator > (int);                  // Перегруженный оператор сравнения с числом
     bool operator < (int);                  // Перегруженный оператор сравнения с числом
     bool operator == (int);                 // Перегруженный оператор сравнения с числом
-    bool operator == (Rational);            // Перегруженный оператор == (чтобы сравнивать дроби)
-    Rational operator- (const Rational&);   // Бинарный перегруженный оператор -
-    Rational operator- ();                  // Унарный перегруженный оператор -
-    friend Rational sqrt(Rational);         // Дружественная функция для вычисления корня
-    friend ostream& operator<< (ostream& os, const Rational&);
-    friend istream& operator>> (istream& is, Rational&);
+    bool operator == (TRational);            // Перегруженный оператор == (чтобы сравнивать дроби)
+    TRational operator- (const TRational&);   // Бинарный перегруженный оператор -
+    TRational operator- ();                  // Унарный перегруженный оператор -
+    friend TRational sqrt(TRational);         // Дружественная функция для вычисления корня
+    friend ostream& operator<< (ostream& os, const TRational&);
+    friend istream& operator>> (istream& is, TRational&);
 };
-#endif // RATIONAL_H
+#endif // Rational_H

@@ -19,7 +19,7 @@ void TApplication:: exec(){
             case 1:
             {
                 cout <<"Enter a,b,c:"<<endl;
-                cout << "a= "; cin >>a;
+                cout << "a= "; cin>>a;
                 cout << "b= "; cin>>b;
                 cout << "c= "; cin>>c;
                 if (a==0)
@@ -53,7 +53,7 @@ void TApplication:: exec(){
                          cout<<"There is one root:"<<" ""x="<<x[0]<<endl;
                     }
                 }else{
-                    cout<<"No roots on the field of rational"<<endl;
+                    cout<<"No roots"<<endl;
                 }
                 delete x;
                 break;

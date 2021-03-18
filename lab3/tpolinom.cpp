@@ -166,7 +166,7 @@ ostream& operator << (ostream& os, TPolinom& p){
               os<< p.a<<"x^2";
               }
         }else{
-            os<<"The polynomial has no roots, so it is impossible to derive in canonical form";
+            os<<"Канонический вид невозможен";
         }
     }
     return os;
@@ -292,7 +292,7 @@ QString& operator << (QString& os, TPolinom& p){
               }
         }
         }else{
-            os+="The polynomial has no roots, so it is impossible to derive in canonical form";
+            os+="Канонический вид невозможен";
         }
     }
     delete [] arrayOfRoots;

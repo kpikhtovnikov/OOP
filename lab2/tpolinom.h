@@ -13,7 +13,7 @@ class TPolinom
     EPrintMode printMode;
     number a,b,c;
     number Discriminant();
-    bool RootsInteger(number*,int,number,number,number);
+    bool RootsCheck(number*,int,number,number,number);
 public:
     TPolinom();
     TPolinom(number,number,number);

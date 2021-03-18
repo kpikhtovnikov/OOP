@@ -2,6 +2,6 @@
 #define NUMBER_H
 #include "rational.h"
 
-typedef Rational number;
+typedef TRational number;
 
 #endif // NUMBER_H

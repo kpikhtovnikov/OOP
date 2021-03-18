@@ -52,14 +52,14 @@ number* TPolinom::Roots(){
     if(QuantityOfRoots()==2){
         ArrayOfRoots = new number[2];
         ArrayOfRoots[0] = ((-b) + sqrt(Discriminant()))/(a*2);
-        ArrayOfRoots[1] = (-b - sqrt(Discriminant()))/(a*2);
+        ArrayOfRoots[1] = ((-b) - sqrt(Discriminant()))/(a*2);
     }else if(QuantityOfRoots()==1){
         ArrayOfRoots = new number[1];
         ArrayOfRoots[0] = -b/(a*2);
     }else{
         ArrayOfRoots = NULL;
     }
-    if(RootsInteger(ArrayOfRoots,QuantityOfRoots(),getA(),getB(),getC())){
+    if(RootsCheck(ArrayOfRoots,QuantityOfRoots(),getA(),getB(),getC())){
         return ArrayOfRoots;
     }
     else{
@@ -173,7 +173,7 @@ ostream& operator << (ostream& os, TPolinom& p){
     delete [] ArrayOfRoots;
 }
 
-bool TPolinom:: RootsInteger(number*ArrayOfRoots,int quantityOfRoots,number a,number b,number c){
+bool TPolinom:: RootsCheck(number*ArrayOfRoots,int quantityOfRoots,number a,number b,number c){
     if(quantityOfRoots==2){
         return (ArrayOfRoots[0]+ArrayOfRoots[1])==-(b/a) && ArrayOfRoots[0]*ArrayOfRoots[1]==(c/a) ;
     }else if(quantityOfRoots==1){

@@ -65,10 +65,10 @@ TInterface::TInterface(QWidget *parent)
     root_btn = new QPushButton("Корни",this);
     root_btn->setGeometry(85,160,70,30);
 
-    print_canonic_btn = new QPushButton("Класс.",this);
+    print_canonic_btn = new QPushButton("Канон.",this);
     print_canonic_btn->setGeometry(160,160,70,30);
 
-    print_classic_btn = new QPushButton("Канон.",this);
+    print_classic_btn = new QPushButton("Класс.",this);
     print_classic_btn->setGeometry(235,160,70,30);
 
     output = new QLabel(this);
