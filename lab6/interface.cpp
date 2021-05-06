@@ -77,7 +77,7 @@ void TInterface::OpenFile()
                         else
                         {
                             flag = false;
-                            QMessageBox::warning(this,"Ошибка","Данная матрица не является матрицой смежности");
+                            QMessageBox::warning(this,"Ошибка","Матрица смежности должна состоять только из 0 и 1");
                         }
                     }
                     matrix.push_back(tmp);
