@@ -9,11 +9,11 @@ class TMatrix
     QVector<QVector<qint16>> Matrix;
 public:
     TMatrix();
+    ~TMatrix();
     TMatrix(int, int, QVector<QVector<qint16>>);
     TMatrix(const TMatrix&);
     QVector<QVector<qint16>> Get();
     bool Is_Adjacency_Matrix();
-    ~TMatrix();
 };
 
 #endif // TMATRIX_H

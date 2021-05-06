@@ -40,7 +40,7 @@ void TCanvas::paintEvent(QPaintEvent*)
     pen.setStyle(Qt::SolidLine);
     p.setPen(pen);
 
-    p.setBrush(QBrush(Qt::green));
+    p.setBrush(QBrush(Qt::blue));
 
     QFont font;
     qreal cf = 0.5*rad;
@@ -95,5 +95,4 @@ void TCanvas::ChangeGraph(TGraph * t)
 {
     g = t;
     this->repaint();
-//    g->draw(&p, rect(), Qt::green);
 }
